@@ -1,0 +1,12 @@
+name: Slipkart Theme
+type: theme
+description: 'Slipkart Theme'
+package: Slipkart
+base theme: false
+core_version_requirement: ^10 || ^11
+regions:
+  header: 'Header'
+  content: 'Content'
+  footer: 'Footer'
+libraries:
+  - slipkart_theme/slipkart-theme-library

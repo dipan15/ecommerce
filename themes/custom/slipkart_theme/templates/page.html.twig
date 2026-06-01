@@ -1,0 +1,18 @@
+{% if page.header %}
+<div {{ attributes.addClass('sk-pg-header') }}>
+    {{ page.header }}
+</div>
+{% do attributes.removeClass('sk-pg-header') %}
+{% endif %}
+{% if page.content %}
+<div {{ attributes.addClass('sk-pg-content') }}>
+    {{ page.content }}
+</div>
+{% do attributes.removeClass('sk-pg-content') %}
+{% endif %}
+{% if page.footer %}
+<div {{ attributes.addClass('sk-pg-footer') }}>
+    {{ page.footer }}
+</div>
+{% do attributes.removeClass('sk-pg-footer') %}
+{% endif %}

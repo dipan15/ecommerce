@@ -1,0 +1,8 @@
+name: Slipkart
+type: module
+description: 'Provides the functionality for the slipkart'
+package: Slipkart
+core_version_requirement: ^9 || ^10
+
+version: '1.0'
+project: 'slipkart'

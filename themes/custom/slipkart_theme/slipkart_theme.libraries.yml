@@ -1,0 +1,8 @@
+slipkart-theme-library:
+  css:
+    theme:
+      css/slipkart-theme.css: {}
+  js:
+    js/slipkart-theme.js: {}
+  dependencies:
+    - core/jquery
