@@ -1,0 +1,44 @@
+uuid: 05fa2f2b-1e35-462d-833a-43f051e4bf47
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.article
+    - node.type.home
+    - node.type.page
+    - node.type.product
+  module:
+    - node
+    - system
+id: seller
+label: Seller
+weight: 4
+is_admin: null
+permissions:
+  - 'access content'
+  - 'access content overview'
+  - 'create article content'
+  - 'create home content'
+  - 'create page content'
+  - 'create product content'
+  - 'delete article revisions'
+  - 'delete home revisions'
+  - 'delete own article content'
+  - 'delete own home content'
+  - 'delete own page content'
+  - 'delete own product content'
+  - 'delete page revisions'
+  - 'delete product revisions'
+  - 'edit own article content'
+  - 'edit own home content'
+  - 'edit own page content'
+  - 'edit own product content'
+  - 'revert article revisions'
+  - 'revert home revisions'
+  - 'revert page revisions'
+  - 'revert product revisions'
+  - 'view article revisions'
+  - 'view home revisions'
+  - 'view own unpublished content'
+  - 'view page revisions'
+  - 'view product revisions'

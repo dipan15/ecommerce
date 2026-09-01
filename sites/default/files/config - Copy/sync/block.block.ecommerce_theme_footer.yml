@@ -1,0 +1,25 @@
+uuid: e6429e4e-8280-4c34-8ca4-e0319b737ab1
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer
+  module:
+    - system
+  theme:
+    - ecommerce_theme
+id: ecommerce_theme_footer
+theme: ecommerce_theme
+region: footer
+weight: 0
+provider: null
+plugin: 'system_menu_block:footer'
+settings:
+  id: 'system_menu_block:footer'
+  label: Footer
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

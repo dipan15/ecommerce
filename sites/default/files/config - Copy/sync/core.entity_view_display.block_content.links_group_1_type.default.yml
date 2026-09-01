@@ -1,0 +1,12 @@
+uuid: 8094ae8f-a731-4947-9c13-98cab6f46970
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.links_group_1_type
+id: block_content.links_group_1_type.default
+targetEntityType: block_content
+bundle: links_group_1_type
+mode: default
+content: {  }
+hidden: {  }

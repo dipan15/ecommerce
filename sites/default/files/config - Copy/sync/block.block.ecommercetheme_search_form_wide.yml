@@ -1,0 +1,23 @@
+uuid: f68ae976-0aba-4853-96be-0487b31d6f4c
+langcode: en
+status: false
+dependencies:
+  module:
+    - search
+  theme:
+    - ecommerce_theme
+_core:
+  default_config_hash: imMyHD6LYci0gtXq56qr9ZKGHzbEG9uFydrN5EhKtSU
+id: ecommerce_theme_search_form_wide
+theme: ecommerce_theme
+region: primary_header
+weight: -2
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (wide)'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

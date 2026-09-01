@@ -1,0 +1,14 @@
+uuid: 3369afb8-267a-417a-bea0-b790a7114efd
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.seller
+  module:
+    - user
+id: user_remove_role_action.seller
+label: 'Remove the Seller role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: seller

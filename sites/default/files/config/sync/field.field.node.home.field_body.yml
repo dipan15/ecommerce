@@ -1,0 +1,19 @@
+uuid: 9d6b0f85-f65d-4535-b8e2-4b56250e1995
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_body
+    - node.type.home
+id: node.home.field_body
+field_name: field_body
+entity_type: node
+bundle: home
+label: Body
+description: 'A custom Body field for Home content type.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

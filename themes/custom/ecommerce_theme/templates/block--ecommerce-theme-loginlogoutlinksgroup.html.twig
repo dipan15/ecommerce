@@ -1,0 +1,51 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - in_preview: Whether the plugin is being rendered in preview mode.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - is_logged_in: User is logged in or not.
+ *
+ * @see template_preprocess_block()
+ *
+ * @ingroup themeable
+ */
+#}
+
+<div{{ attributes.addClass('ecommerce-loginlogoutlinksgroup') }}>
+  {% block content %}
+    {% if is_logged_in %}
+        <a href="{{ url('user.logout') }}"
+         class="btn btn-primary button-link-field logout-button">
+            Logout
+        </a>
+    {% else %}
+        <a href="http://localhost/drupal_10_4_3/login"
+         class="btn btn-primary button-link-field login-button">
+            Login
+        </a>
+        <a href="http://localhost/drupal_10_4_3/registration"
+         class="btn btn-primary button-link-field register-button">
+            Register
+        </a>
+    {% endif %}
+  {% endblock %}
+</div>

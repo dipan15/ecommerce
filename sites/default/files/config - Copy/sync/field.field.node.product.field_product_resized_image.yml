@@ -1,0 +1,38 @@
+uuid: d0a0b227-07d7-458b-9165-774429df67b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_product_resized_image
+    - node.type.product
+  module:
+    - ecommerce
+id: node.product.field_product_resized_image
+field_name: field_product_resized_image
+entity_type: node
+bundle: product
+label: 'Product Resized Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg webp'
+  max_filesize: '10 MB'
+  max_resolution: 1000x500
+  min_resolution: 120x150
+  alt_field: 1
+  alt_field_required: 1
+  title_field: 0
+  title_field_required: 0
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: custom_image_field

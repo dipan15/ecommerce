@@ -1,0 +1,20 @@
+uuid: 0dd85785-d41d-4d3b-a750-1ea524bbb2bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.login_logout_buttons_block_type
+id: block_content.login_logout_buttons_block_type.default
+targetEntityType: block_content
+bundle: login_logout_buttons_block_type
+mode: default
+content:
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

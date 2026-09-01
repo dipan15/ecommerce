@@ -1,0 +1,32 @@
+uuid: 55c7d870-c38c-4f8a-b507-0daa8baaa202
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+  theme:
+    - ecommerce_theme
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: ecommerce_theme_primary_local_tasks
+theme: ecommerce_theme
+region: primary_header
+weight: -7
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      content_editor: content_editor
+      administrator: administrator

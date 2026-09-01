@@ -1,0 +1,289 @@
+<?php
+
+use Drupal\Core\Template\Attribute;
+
+/**
+ * @file
+ * Functions to support theming in the ecommerce_theme theme.
+ */
+
+/**
+ * Implements hook_preprocess_menu_local_task().
+ */
+function ecommerce_preprocess_menu_local_task(&$variables) {
+  // Always check if the link element exists to avoid PHP errors.
+  if (isset($variables['link'])) {
+    // Example 1: Add a specific CSS class to the local task link
+    $variables['link']['#options']['attributes']['class'][] = 'nav-link';
+    }
+}
+
+/**
+ * Overrides template_preprocess_field().
+ * Implements hook_preprocess_FIELD().
+ */
+function ecommerce_preprocess_field(&$variables) {
+  if ($variables['field_name'] === 'field_body' &&
+   $variables['element']['#bundle'] === 'home') {
+    foreach($variables['items'] as $delta => $item) {
+      if($delta === 0 &&
+       isset($variables['items'][$delta])) {
+        $variables['items'][$delta]['attributes']->addClass('home-field-body');
+      }
+    }
+  }
+
+  // Check if the field is being rendered inside a View.
+  if (isset($variables['element']['#custom_view_context'])) {
+    
+    // Get the view machine name
+    $view_info = $variables['element']['#custom_view_context'];
+    $view_id = $view_info['id'];
+    
+    // Get the current display ID (e.g., 'page_1', 'block_1')
+    $display_id = $view_info['current_display'];
+
+    // Your custom logic here
+    if ($view_id == 'productsview') {
+      // The field is getting rendered inside a 'productsview' View
+      $variables['is_field_in_productsview_view'] = TRUE;
+    } else {
+      // The field is being rendered normally (e.g., full node page)
+      $variables['is_field_in_productsview_view'] = FALSE;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function ecommerce_theme_preprocess_node(array &$variables) {
+  $node = $variables['node'] ?? NULL;
+  
+  if ($node && $node->bundle() == 'product') {
+    // 1. Check if this node is currently being rendered inside a View row
+    if ($variables['elements']['#custom_view_context']) {
+
+      // Access View properties if needed
+      $view_context = $variables['elements']['#custom_view_context'];
+      $view_id = $view_context['id'];
+      $current_display = $view_context['current_display'];
+      
+      if($view_id === 'productsview') {
+        // Add a custom flag for your Twig template.
+        $variables['is_node_in_view'] = TRUE;
+        
+        // 3. Alternative: Inject the data into ALL fields of this node loop
+        foreach ($variables['content'] as $key => &$component) {
+          if (is_array($component)) {
+            // && strpos($key, 'field_') === 0.
+            $component['#custom_view_context'] = $view_context;
+          }
+        }
+        $variables['label']['#custom_view_context'] = $view_context;
+
+        /* 3. Inject the data into a specific field (e.g., 'field_headline')
+        if (isset($variables['content']['field_headline'])) {
+          $variables['content']['field_headline']['#custom_view_context'] = $view_context;
+        }*/
+      }
+      
+    } else {
+      $variables['is_node_in_view'] = FALSE;
+    }
+
+    if (isset($variables['content']['field_ram'])) {
+      // $variables['content']['field_ram']['#weight'] = -10;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_view_grid_responsive().
+ */
+function ecommerce_theme_preprocess_views_view_grid_responsive(&$variables) {
+  if (isset($variables['view']) && is_object($variables['view'])) {
+    $view = $variables['view'];
+
+    // 1. Target a specific view
+    if ($view->id() === 'productsview') {
+      // 2. Define the metadata you want to pass down
+      $view_context = [
+        'id' => $view->id(),
+        'current_display' => $view->current_display,
+      ];
+
+      // 3. Loop through each item in the responsive grid
+      // and add metadata into each item.
+      foreach ($variables['items'] as $key => &$item) {
+        $item['content']['#custom_view_context'] = $view_context;
+        
+        // Example C: Edit or hide a specific field inside the item (if using Fields)
+        if (isset($item['content']['#row']->_entity)) {
+          // You can access the raw entity data if needed
+          $entity = $item['content']['#row']->_entity;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function ecommerce_theme_preprocess_page(&$variables) {
+  // 1. Ensure the source attributes are converted to a standard array
+  $original_array = [];
+  if (isset($variables['attributes'])) {
+    $original_array = $variables['attributes'] instanceof Attribute 
+      ? $variables['attributes']->toArray() 
+      : $variables['attributes'];
+  }
+
+  // 2. Instantiate a brand new, separate Attribute object with the cloned data
+  $variables['cloned_attributes'] = new Attribute($original_array);
+
+  // 3. You can now modify the new attributes without affecting the original ones
+  $variables['cloned_attributes']->addClass('slipkart-global');
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function ecommerce_theme_preprocess_block(&$variables) {
+  if (isset($variables['elements']['#plugin_id'])
+   && str_starts_with($variables['elements']['#plugin_id'], 'block_content:')) {
+    $block_content = $variables['elements']['content']['#block_content'] ?? null;
+    $block_bundle = $block_content->bundle();
+    if ($block_bundle === 'links_group_1_type') {
+      $is_logged_in = \Drupal::currentUser()->isAuthenticated();
+      $variables['is_logged_in'] = $is_logged_in;
+    }
+  }
+
+
+  // Check for a specific block ID (e.g., 'system_branding_block')
+  // dump($variables['elements']['#id']);
+  // dump($variables['elements']['#plugin_id']);
+  if (isset($variables['elements']['#plugin_id'])
+   && $variables['elements']['#plugin_id'] === 'system_main_block') {
+    // Ensure the #markup key exists and contains a string
+    if (isset($variables['content']['#markup'])
+     && is_object($variables['content']['#markup'])) {
+      
+      if (get_class($variables['content']['#markup']) === 'Drupal\Core\Render\Markup') {
+        $string_data = (string) $variables['content']['#markup'];
+      } else {
+        $string_data == "";
+      }
+
+      // Look for the specific class in the raw markup string
+      if (strpos($string_data, 'slipkart-registration-form') !== FALSE) {
+        // The form class was found in the markup. Add your logic here.
+        $variables['is_registration_form_block'] = true;
+      }
+      if (strpos($string_data, 'slipkart-login-form') !== FALSE) {
+        // The form class was found in the markup. Add your logic here.
+        $variables['is_login_form_block'] = true;
+      }
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_input().
+ */
+function ecommerce_theme_preprocess_input(&$variables) {
+  $element = $variables['element'];
+  
+  // Apply 'form-control' or 'form-check-input' based on input type
+  if (in_array($element['#type'], ['textfield', 'email', 'password', 'textarea'])) {
+    // $variables['attributes']['class'][] = 'form-control';
+    // $variables['attributes']['class'][] = 'col-md-3';
+  } elseif (in_array($element['#type'], ['checkbox', 'radio'])) {
+    // $variables['attributes']['class'][] = 'form-check-input';
+  } elseif (in_array($element['#type'], ['email'])) {
+    // $variables['attributes']['class'][] = 'form-email';
+  }
+}
+
+/**
+ * Implements template_preprocess_form_element().
+ */
+function ecommerce_theme_preprocess_form_element(&$variables) {
+  // Target a specific form element by its ID/Name
+  if (isset($variables['element']['#name'])
+   && $variables['element']['#name'] === 'user_type') {
+    $variables['label']['#attributes']['class'][] = 'col-md-4';
+  }
+  if (isset($variables['element']['#name'])
+   && $variables['element']['#name'] === 'username') {
+    $variables['label']['#attributes']['class'][] = 'col-md-3';
+  }
+  if (isset($variables['element']['#name'])
+   && $variables['element']['#name'] === 'email') {
+    $variables['label']['#attributes']['class'][] = 'col-md-3';
+  }
+  if (isset($variables['element']['#name'])
+   && $variables['element']['#name'] === 'password') {
+    $variables['label']['#attributes']['class'][] = 'col-md-3';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_views_view_alter() for views_view.
+ */
+function ecommerce_theme_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
+  // Get the view object
+  $view = $variables['view'];
+  
+  // Add a suggestion targeting the specific View ID
+  $suggestions[] = 'views_view__' . $view->id();
+  
+  // Add a suggestion targeting the specific View ID and Display ID combined
+  $suggestions[] = 'views_view__' . $view->id() . '__' . $view->current_display;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for views_view_grid_responsive.
+ */
+function ecommerce_theme_theme_suggestions_views_view_grid_responsive_alter(array &$suggestions, array $variables) {
+  $view = $variables['view'];
+  $view_id = $view->id();
+  $display_id = $view->current_display;
+
+  // Adds: views-view-grid-responsive--view-id.html.twig
+  $suggestions[] = 'views_view_grid_responsive__' . $view_id;
+
+  // Adds: views-view-grid-responsive--view-id--display-id.html.twig
+  $suggestions[] = 'views_view_grid_responsive__' . $view_id . '__' . $display_id;
+}
+
+/**
+ * Implements hook_theme_suggestions_NODE_alter().
+ */
+function ecommerce_theme_theme_suggestions_node_alter(array &$suggestions, array $variables) {
+  $node = $variables['elements']['#node'];
+  
+  // Check if the node is being rendered inside a View
+  if (isset($node->view)) {
+    $view_id = $node->view->id();
+    $display_id = $node->view->current_display;
+    $bundle = $node->bundle();
+    $view_mode = $variables['elements']['#view_mode'];
+
+    // Generic view suggestion
+    $suggestions[] = 'node__view__' . $view_id;
+
+    // View + Display suggestion
+    $suggestions[] = 'node__view__' . $view_id . '__' . $display_id;
+
+    // View + Content Type suggestion
+    $suggestions[] = 'node__view__' . $view_id . '__' . $bundle;
+
+    // View + Content Type + View Mode suggestion
+    $suggestions[] = 'node__view__' . $view_id . '__' . $bundle . '__' . $view_mode;
+  }
+}
+
+

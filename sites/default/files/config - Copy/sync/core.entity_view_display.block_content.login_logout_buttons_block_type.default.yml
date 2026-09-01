@@ -1,0 +1,12 @@
+uuid: 89017ed6-5efa-42ff-96d7-3a816466b1e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.login_logout_buttons_block_type
+id: block_content.login_logout_buttons_block_type.default
+targetEntityType: block_content
+bundle: login_logout_buttons_block_type
+mode: default
+content: {  }
+hidden: {  }

@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * @file
+ * Contains the hooks and functions for the ecommerce functionalities.
+ */
+
+/**
+ * Implements hook_theme().
+ */

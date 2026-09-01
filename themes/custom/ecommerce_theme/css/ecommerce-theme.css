@@ -1,0 +1,223 @@
+/* --- Desktop and All screens --- */
+html {
+    background-color: yellow;
+    color: blue;
+}
+
+body {
+    background-color: yellow;
+    color: blue;
+}
+
+/* Header. */
+
+.ec-pg-header {
+    background-color: lightblue;
+    display: flex;
+}
+
+.ecommerce-header-region {
+    display: flex;
+}
+
+.ec-pg-primary-header {
+    width: 1141px;
+}
+
+.ecommerce-primary-header-region {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ec-pg-secondary-header {
+    width: 225px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.ecommerce-secondary-header-region {
+}
+
+.ecommerce-nav-account {
+    display: inline-flex;
+    margin-left: 20px;
+    margin-right: 20px;
+    /* 1366px-225px = 1141px */
+    max-width: 1141px;
+}
+
+.account-menu {
+    margin-right: 0px !important;
+}
+
+.account-menu.navbar-nav .nav-item .nav-link {
+    color: blue;
+}
+
+.account-menu.navbar-nav .nav-item .nav-link.is-active {
+    color: green;
+}
+
+.account-menu.navbar-nav .nav-item :is(.nav-link:visited,
+ .nav-link:focus, .nav-link:hover) {
+    color: purple;
+}
+
+.ecommerce-nav-main {
+    display: inline-flex;
+    margin-left: 20px;
+    margin-right: 20px;
+    /* 1366px-225px = 1141px */
+    max-width: 1141px;
+}
+
+.main-menu {
+    margin-right: 0px !important;
+}
+
+.main-menu.navbar-nav .nav-item .nav-link {
+    color: blue;
+}
+
+.main-menu.navbar-nav .nav-item .nav-link.is-active {
+    color: green;
+}
+
+.main-menu.navbar-nav .nav-item :is(.nav-link:visited,
+ .nav-link:focus, .nav-link:hover) {
+    color: purple;
+}
+
+.ecommerce-loginlogoutlinksgroup {
+    display: inline-block;
+    /* Note if the parent element contains display inline and
+     a child element contains display inline-block,
+     then child can overlap parent element.
+    To avoid this overlap, parent element should contain same display property
+     as child element. i.e. parent should contain display inline-block and
+     child should also contain display inline-block like in here
+     .ecommerce-loginlogoutlinksgroup. */
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.login-button {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.register-button {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.logout-button {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+/* Content. */
+
+.ec-pg-content {
+    min-height: 270px;
+}
+
+.registration-parent-block-div {
+    /* Registration form parent block div. */
+    margin: 20px;
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: flex-start;     /* Vertical centering */
+    /* min-height: 100vh;*/       /* Full viewport height */
+}
+
+.login-parent-block-div {
+    /* Login form parent block div. */
+    margin: 20px;
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: flex-start;     /* Vertical centering */
+    /* min-height: 100vh; */       /* Full viewport height */
+}
+
+.home-field-body {
+    text-align: center;
+    font-weight: bold;
+    font-size: 36px;
+}
+
+/* Footer. */
+
+.ec-pg-footer {
+    background-color: black;
+    color: white;
+    min-height: 270px;
+}
+
+.ecommerce-footer-region {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */ /* Vertically centers the column items */
+}
+
+.ecommerce-nav-footer {
+    display: inline-flex;
+    margin-left: 20px;
+    margin-right: 20px;
+    /* 1366px-225px = 1141px */
+    max-width: 1141px;
+}
+
+.footer-menu {
+    flex-direction: column !important;
+    align-items: flex-start;
+    margin-right: 0px !important;
+}
+
+.footer-menu.navbar-nav .nav-item .nav-link {
+    color: white;
+}
+
+.footer-menu.navbar-nav .nav-item .nav-link.is-active {
+    color: green;
+}
+
+.footer-menu.navbar-nav .nav-item :is(.nav-link:visited,
+ .nav-link:focus, .nav-link:hover) {
+    color: purple;
+}
+
+.productsview-field {
+    font-style: italic;
+}
+
+.productsview-card {
+    background-color: white;
+    padding: 10px;
+    margin: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+}
+
+/* --- Small Tablets and Large Phones --- */
+@media screen and (max-width: 768px) {
+    /* Styles apply to small tablets and portrait phones */
+    .home-field-body {
+        text-align: center;
+        font-weight: bold;
+        font-size: 24px;
+    }
+}
+
+/* --- Standard Mobile Phones --- */
+@media screen and (max-width: 480px) {
+    /* Styles apply strictly to smartphones */
+    .home-field-body {
+        text-align: center;
+        font-weight: bold;
+        font-size: 16px;
+    }
+}

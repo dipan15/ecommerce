@@ -1,0 +1,27 @@
+uuid: 4b417114-93e7-44a4-b87d-11840ccac36a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.home.field_body
+    - node.type.home
+  module:
+    - user
+id: node.home.default
+targetEntityType: node
+bundle: home
+mode: default
+content:
+  field_body:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

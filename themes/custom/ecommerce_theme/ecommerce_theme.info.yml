@@ -1,0 +1,14 @@
+name: Ecommerce Theme
+type: theme
+description: 'Ecommerce Theme'
+package: Ecommerce
+base theme: false
+core_version_requirement: ^10 || ^11
+regions:
+  primary_header: 'Primary Header'
+  secondary_header: 'Secondary Header'
+  content: 'Content'
+  footer: 'Footer'
+libraries:
+  - ecommerce_theme/ecommerce-theme-library
+  - ecommerce_theme/bootstrap-cdn

@@ -1,0 +1,28 @@
+uuid: fdfd403a-20cb-4ccd-a606-3b542c50cc45
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.products_list.body
+    - node.type.products_list
+  module:
+    - text
+    - user
+id: node.products_list.default
+targetEntityType: node
+bundle: products_list
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

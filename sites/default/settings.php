@@ -904,6 +904,10 @@ $databases['default']['default'] = array (
   'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
   'autoload' => 'core/modules/mysql\\src\\Driver\\Database\\mysql\\',
 );
-$settings['config_sync_directory'] = 'sites/default/files/config_JfKyj3nRJaBc2VnRZjuxjnNAr-8Ir7NhEWw3P0dmw06Kp7Btn76_S4-rhYeZvjw4O27kUs9CdA/sync';
+$settings['config_sync_directory'] = 'sites/default/files/config/sync';
 
 ini_set('max_execution_time', 0);
+
+# $settings['cache']['bins']['render'] = 'cache.backend.null';
+# $settings['cache']['bins']['page'] = 'cache.backend.null';
+# $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';

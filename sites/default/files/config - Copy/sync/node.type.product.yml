@@ -1,0 +1,17 @@
+uuid: 07b6d7bc-cc64-408f-b5f1-a6e2bdfbb5e2
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Product
+type: product
+description: 'A content type for a product in eCommerce website.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,22 @@
+uuid: 3b25ddc7-64a2-43b2-bbf7-3b4df78b1cf9
+langcode: en
+status: false
+dependencies:
+  theme:
+    - ecommerce_theme
+_core:
+  default_config_hash: ydSxdq7R66I8UMC460rOzlfzvlUL4VRbdwc6z9DWaUI
+id: ecommerce_theme_secondary_local_tasks
+theme: ecommerce_theme
+region: primary_header
+weight: -5
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Secondary tabs'
+  label_display: '0'
+  provider: core
+  primary: false
+  secondary: true
+visibility: {  }

@@ -1,0 +1,14 @@
+uuid: 003f5a9f-0b3b-40b4-a039-00b4fe7d1878
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - system
+id: buyer
+label: Buyer
+weight: 5
+is_admin: null
+permissions:
+  - 'access content'
+  - 'view own unpublished content'

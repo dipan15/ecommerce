@@ -1,0 +1,25 @@
+uuid: 6abae98d-0c42-45c7-8e33-9b80ff6a8864
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:links_group_1_type:cf0253c2-bfd7-4f47-bb6a-04d9d275b2b5'
+  module:
+    - block_content
+  theme:
+    - ecommerce_theme
+id: ecommerce_theme_loginlogoutlinksgroup
+theme: ecommerce_theme
+region: secondary_header
+weight: -3
+provider: null
+plugin: 'block_content:cf0253c2-bfd7-4f47-bb6a-04d9d275b2b5'
+settings:
+  id: 'block_content:cf0253c2-bfd7-4f47-bb6a-04d9d275b2b5'
+  label: 'Login Logout Links Group'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

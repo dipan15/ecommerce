@@ -1,0 +1,39 @@
+uuid: 74f5c6b8-ee16-45a8-b658-35ca9faa4fff
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_ram
+field_name: field_ram
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 1_gb_and_below
+      label: '1 GB and Below'
+    -
+      value: 2_gb
+      label: '2 GB'
+    -
+      value: 3_gb
+      label: '3 GB'
+    -
+      value: 4_gb
+      label: '4 GB'
+    -
+      value: 6_gb
+      label: '6 GB'
+    -
+      value: 8_gb_and_above
+      label: '8 GB and Above'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

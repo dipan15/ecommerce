@@ -1,0 +1,21 @@
+uuid: 26458bb7-b2c4-41e5-bbf3-0c17cf0ceeff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ram
+    - node.type.product
+  module:
+    - options
+id: node.product.field_ram
+field_name: field_ram
+entity_type: node
+bundle: product
+label: RAM
+description: 'Product RAM'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

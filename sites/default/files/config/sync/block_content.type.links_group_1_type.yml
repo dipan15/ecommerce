@@ -1,0 +1,8 @@
+uuid: 8e56447f-ac73-4249-ab17-d3b4db5784f5
+langcode: en
+status: true
+dependencies: {  }
+id: links_group_1_type
+label: 'Links Group 1 Type'
+revision: false
+description: 'A block type for group of links.'

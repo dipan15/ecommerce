@@ -1,0 +1,20 @@
+uuid: 355fca80-39fa-4147-9ddd-2833426c924c
+langcode: en
+status: true
+dependencies: {  }
+name: product_style
+label: 'Product Style'
+effects:
+  4ec9cc2b-4b7d-41f9-a937-b7d437d003a3:
+    uuid: 4ec9cc2b-4b7d-41f9-a937-b7d437d003a3
+    id: image_resize
+    weight: 2
+    data:
+      width: 120
+      height: 150
+  265ab217-0969-4a56-9d9b-cfc82c366ba8:
+    uuid: 265ab217-0969-4a56-9d9b-cfc82c366ba8
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

@@ -1,0 +1,23 @@
+uuid: fe6359f6-d058-4164-8d19-5787332ab684
+langcode: en
+status: false
+dependencies:
+  module:
+    - search
+  theme:
+    - ecommerce_theme
+_core:
+  default_config_hash: yEBET0cqDbk8dkWzaJw-8CKft0961VBflsISoSR6Lj8
+id: ecommerce_theme_search_form_narrow
+theme: ecommerce_theme
+region: primary_header
+weight: -1
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (narrow)'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

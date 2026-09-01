@@ -1,0 +1,22 @@
+uuid: d78d36e3-a390-4f7a-b8ac-64cdee2579b4
+langcode: en
+status: false
+dependencies:
+  module:
+    - help
+  theme:
+    - ecommerce_theme
+_core:
+  default_config_hash: VfPFqqxfkomud5CO8DUijw85QIl9GIxh_nIxLOYESxg
+id: ecommerce_theme_help
+theme: ecommerce_theme
+region: primary_header
+weight: 1
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

@@ -1,0 +1,30 @@
+uuid: f82ef522-d4b1-4bfe-beb2-90c47547e862
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.products_list.body
+    - node.type.products_list
+  module:
+    - text
+    - user
+id: node.products_list.teaser
+targetEntityType: node
+bundle: products_list
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }
